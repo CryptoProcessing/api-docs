@@ -20,7 +20,11 @@ Attribute | Description
 
 
 
-
 ## Create an account
 
 Creates an account for further work with processing.
+
+
+## Update an account
+
+Updates an account
