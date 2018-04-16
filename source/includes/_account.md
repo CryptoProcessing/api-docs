@@ -12,6 +12,7 @@ This is an object representing your account.
     "id": "c582e3f2-1ded-4696-8b7f-28516f546d0f",
     "currency": "BTC",
     "created_at": "2018-04-16T15:30:00.000Z",
+    "updated_at": "2018-04-16T18:20:00.000Z",
     "name": "New account",
     "type": "Multisig account"
 }
@@ -70,4 +71,35 @@ curl "http://example.com/api/account"
 
 ## Update an account
 
+> PUT http://example.com/api/account
+
 Updates an account
+
+> Example request
+
+```shell
+curl "http://example.com/api/account"
+  -X POST
+  -d '{"email": "mail@example.com",
+        "name": "Old account",
+  -H "Authorization: <jwt token>"
+```
+
+
+> Example response
+
+```json
+{
+    account: [
+        {
+            "email": "mail@example.com",
+            "id": "c582e3f2-1ded-4696-8b7f-28516f546d0f",
+            "currency": "BTC",
+            "created_at": "2018-04-16T15:30:00.000Z",
+            "updated_at": "2018-04-16T18:20:00.000Z",
+            "name": "Old account",
+            "type": "Multisig account"
+        }
+    ]
+}
+```
