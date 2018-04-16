@@ -27,7 +27,7 @@ curl "http://example.com/api/transactions"
   -H "Authorization: <jwt token>"
 ```
 
-> The above command returns JSON structured like this:
+> For the Ethereum the above command returns JSON structured like this:
 
 ```json
 {
@@ -39,6 +39,7 @@ curl "http://example.com/api/transactions"
             "description": "Incoming transaction",
             "fromaddress": "0x687422eEA2cB73B5d3e242bA5456b782919AFc85",
             "gasprice": 18000000000,
+            "startgas": 314150, 
             "id": 1,
             "nonce": 460724,
             "toaddress": "0xb8bdedee86f701da8ef631750a964dbbe8802c7a",
@@ -63,6 +64,7 @@ curl "http://example.com/api/transactions"
             "description": "Incoming transaction",
             "fromaddress": "0xe17F97b518E9E8bBC9b72Ab88fd3f9db10BeA981",
             "gasprice": 10000000000,
+            "startgas": 314150, 
             "id": 2,
             "nonce": 5913,
             "toaddress": "0xb8bdedee86f701da8ef631750a964dbbe8802c7a",
@@ -83,61 +85,112 @@ curl "http://example.com/api/transactions"
     ]
 }
 ```
+> For the Bitcoin the above command returns JSON structured like this:
 
+```json
+[
+  {
+    "amount": 87269815,
+    "block_number": 1287048,
+    "confirmations_count": 2725,
+    "created_at": "Thu, 01 Mar 2018 14:42:41 GMT",
+    "currency": "btc",
+    "description": "First",
+    "id": "7a23f17f7e01384599732bba37b6fb175a27cddddbba9a0bdffa56febc22672f",
+    "receiver_addresses": [
+      {
+        "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
+        "amount": 87269815
+      },
+      {
+        "address": "mvZK9A1JXE87puEbudsqPNxiye1StLZ7se",
+        "amount": 99988700
+      }
+    ],
+    "sender_addresses": [
+      {
+        "address": "mvZK9A1JXE87puEbudsqPNxiye1StLZ7se"
+      }
+    ],
+    "statuses": [
+      {
+        "date": "Thu, 01 Mar 2018 14:42:41 GMT",
+        "status": "non confirmed"
+      },
+      {
+        "date": "Thu, 01 Mar 2018 14:42:42 GMT",
+        "status": "in mempool"
+      },
+      {
+        "date": "Thu, 01 Mar 2018 14:50:28 GMT",
+        "status": "in block"
+      }
+    ],
+    "type": "send"
+  }
+ ]
+```
 This endpoint retrieves all transactions.
 
 ### HTTP Request
 
 `GET http://example.com/api/transactions`
 
-### Query Parameters
-
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 ## Create A Transaction
+
+> POST http://example.com/api/transaction
 
 ```shell
 curl -X POST "http://example.com/api/transactions"
+ -d '{"from_": "0xe17F97b518E9E8bBC9b72Ab88fd3f9db10BeA981",
+     "to_": "0x687422eea2cb73b5d3e242ba5456b782919afc85",
+     "gasprice": 19000000000,
+     "startgas":314150,
+     "description": "from second address", 
+     "type": "send", 
+     "value": 60000000
+  }'
   -H "Authorization: <jwt token>"
 ```
-
 > The above command returns JSON structured like this:
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "hash": "0x1cc19b3a7f80d12b992c5bed3f101548b374d2c9c4804fde4d02508c36e4fcbc"
   }
 ]
 ```
 
-This endpoint retrieves all transactions.
+```shell
+curl -X POST "http://example.com/api/transactions"
+  -d '{"from_":
+	[
+		"mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+	],
+"fee": "fastestFee",
+"description": "First", 
+"type": "send", 
+"to_": [
+		{
+			"amount": "87269815", 
+			"address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+		},
+    {
+      "amount": "99988700", 
+      "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+    },
+	]
+}'
+   -H "Authorization: <jwt token>"
 
-### HTTP Request
+```
+> The above command returns JSON structured like this:
+```json
+[
+  {
+    "hash": "402cc503487d6a26ffb4185ada70cce28d960060ec33dd519615df96eaabadea"
+  }
+]
+```
 
-`POST http://example.com/api/transactions`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
