@@ -10,8 +10,10 @@ toc_footers:
 
 includes:
   - introduction
-  - errors
   - orders
+  - wallets
+  - wallet_addresses
+  - errors
 
 search: true
 ---
