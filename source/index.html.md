@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - introduction
   - orders
+  - orders_webhooks
   - wallets
   - wallet_addresses
   - errors

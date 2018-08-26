@@ -28,7 +28,7 @@ Attribute | Description
 `updated_at` | Order updated at date and time
 `amount` | Order's amount value, big float (up to 18 decimals)
 `currency` | Order's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD"]
-`status` | Order's status. Available options: ["NEW", "SUCCESS", "FAIL"]
+`status` | Order's status. Available options: ["NEW", "PROCESSING", "PENDING", "SUCCESS", "FAIL"]
 `external_payout_address` | Payout address related to pyout currency
 `external_payout_currency` | Payout currency (what merchant takes)
 
