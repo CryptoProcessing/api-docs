@@ -22,16 +22,13 @@ Each API request has an associated request identifier. You can find this value i
 
 ## Pagination
 
-All top-level API resources have support for bulk fetches via "list" API methods. For instance, you can list transactions, wallets. These list API methods share a common structure, taking at least these three parameters: `limit`, `starting_after`, and `ending_before`.
-
-API utilizes cursor-based pagination via the `starting_after` and `ending_before` parameters. Both parameters take an `updated_at` value (see below) and return objects in reverse chronological order. The `ending_before` parameter returns objects listed before the date. The `starting_after` parameter returns objects listed after the date. 
+All top-level API resources have support for bulk fetches via "list" API methods. For instance, you can list transactions, wallets. These list API methods share a common structure, taking at least these two parameters: `page` and `limit`.
 
 Argument | Description
 --------- | -----------
-`limit` | A limit on the number if objects to be returned. (default 10)
-`starting_after` | A filter to send back objected updated after the date
-`ending_before` | A filter to send back objects updated before the date
+`page` | Pagination starts at page 1, not at page 0 (page 0 will return the same results as page 1)
+`limit` | A limit on the number if objects to be returned. (default 25, max 100)
 
 ## Dates
 
-All dates should be passed and will be formatted accoring with `iso8601` - `YYYY-MM-DDTHH:mm:ss.sssZ` (ex. `2018-04-10T14:48:00.000Z`) 
+All dates should be passed and will be formatted according with `iso8601` - `YYYY-MM-DDTHH:mm:ss.sssZ` (ex. `2018-04-10T14:48:00.000Z`) 
