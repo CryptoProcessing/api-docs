@@ -34,6 +34,45 @@ Attribute | Description
 `created_at` | Wallet creation date and time
 `updated_at` | Wallet updated date and time
 
+
+## Create wallet
+
+> POST https://cryptoprocessing.io/api/v1/wallets
+
+> Example request
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets \
+  -H 'Authorization: Token 4d0834297304689f7b7983007775610bdb856c7e15790e7d5c7f857e627fe568' \
+  -H 'Content-Type: application/json' \
+  -H 'Idempotency-Key: 7952c055-b8a1-498e-b0ea-737985e954c0' \
+  -d '{
+	"name": "crypto_btc",
+	"currency": "BTC",
+	"human": "Crypto BTC",
+	"description": "For inner use of the new crypto-exchange"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "id": "8961afc0-e2da-4807-a517-e82909c135ee",
+        "name": "crypto_btc",
+        "currency": "BTC",
+        "human": "Crypto BTC",
+        "description": "For inner use of the new crypto-exchange",
+        "system_fee_percent": "1.0",
+        "merchant_fee_percent": "0.0",
+        "created_at": "2018-08-29T10:51:39.283Z",
+        "updated_at": "2018-08-29T10:51:39.881Z"
+    }
+}
+```
+
 ## Return merchant wallets
 
 > GET https://cryptoprocessing.io/api/v1/wallets?page=1&limit=20

@@ -43,8 +43,9 @@ Creates order
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/orders" \
-  -H "Authorization: Token <token>" \
+  -H "Authorization: Token 4d0834297304689f7b7983007775610bdb856c7e15790e7d5c7f857e627fe568" \
   -H "Content-Type: application/json" \
+  -H 'Idempotency-Key: bc4541e5-29b1-484e-89ad-ee9e7deba1c9' \
   -X POST \
   -d '{ "amount":50, "currency":"EUR", "external_payout_currency":"BTC", "external_payout_address":"2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M" }'
 ```
