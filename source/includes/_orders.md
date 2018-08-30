@@ -12,6 +12,8 @@
     "amount": 40.0,
     "currency": "EUR",
     "status": "SUCCESS",
+    "secret_for_success_redirect": "some_secret_key1",
+    "secret_for_fail_redirect": "some_secret_key2",
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
     "external_payout_currency": "BTC"
 }
@@ -31,6 +33,8 @@ Attribute | Description
 `status` | Order's status. Available options: ["NEW", "PROCESSING", "PENDING", "SUCCESS", "FAIL"]
 `external_payout_address` | Payout address related to pyout currency
 `external_payout_currency` | Payout currency (what merchant takes)
+`secret_for_success_redirect` | Some secret key which will be included in GET params for success redirect endpoint
+`secret_for_fail_redirect` | Some secret key which will be included in GET params for fail redirect endpoint
 
 
 ## Create order
@@ -63,6 +67,8 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
     "status": "NEW",
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
     "external_payout_currency": "BTC",
+    "secret_for_success_redirect": "e5f295460e5e7b9c57fb2413f0e67598",
+    "secret_for_fail_redirect": "023a4207e7286c216396b8508ddfdd0b"
     "payment_url": "http://cryptoprocessing.io/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3/pay"
   }
 }
