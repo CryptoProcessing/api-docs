@@ -1,5 +1,9 @@
 # Introduction
 
+## Common
+This is a documentation for public https://cryptoprocessing.io service. Before using this API you need to get API keys of the related page in your personal account.
+
+
 ## Idempotent Requests
 
 ```shell
