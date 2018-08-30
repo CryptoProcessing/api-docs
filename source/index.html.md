@@ -14,6 +14,8 @@ includes:
   - orders_webhooks
   - wallets
   - wallet_addresses
+  - wallet_address_transactions
+  - wallet_transactions
   - rates
   - errors
 

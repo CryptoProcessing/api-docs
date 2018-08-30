@@ -6,6 +6,8 @@
 
 ```json
 {
+    "id": "fa3023cb-e0f1-441c-9e0c-4275e5423691",
+    "name": "name",
     "address": "0xcb9b4199021dd923bae7948fb304b5450c2a92e3",
     "final_balance": 100000000000000000,
     "total_received": 100000000000000000,
@@ -20,6 +22,8 @@ Represents wallet object
 
 Attribute | Description
 --------- | -----------
+`id` | Address ID
+`name` | Some human name
 `address` | Address
 `final_balance` | Current address balance 
 `total_received` | Incoming transactions amount
@@ -28,7 +32,7 @@ Attribute | Description
 
 ## Return wallet addresses
 
-> GET https://cryptoprocessing.io/api/v1/wallets/c6136ee4-eabd-4cbe-aed8-ecd0ffdbcc4e/addresses?page=1&limit=25
+> GET https://cryptoprocessing.io/api/v1/wallets/:id/addresses?page=1&limit=25
 
 > Example request
 
@@ -75,3 +79,17 @@ curl -X GET \
     ]
 }
 ```
+
+
+## Create address
+
+> POST https://cryptoprocessing.io/api/v1/wallets/:id/addresses
+
+### Parameters:
+
+Parameter | Description
+--------- | -----------
+`name` | Some human name
+
+Returns an address object
+
