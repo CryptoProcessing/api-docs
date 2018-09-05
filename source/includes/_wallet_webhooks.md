@@ -1,6 +1,6 @@
 # Wallet's webhooks
 
-With the help of webhooks you will receive notifications about transactions in the blockchain.
+With the help of webhooks you will receive notifications about transactions in the blockchain. Maximum number of webhooks 20.
 
 ## Webhook object
 
