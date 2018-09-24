@@ -36,7 +36,7 @@ Attribute | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/webhooks \
-  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf7a323' \
+  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf00000' \
   -H 'Content-Type: application/json' \
   -d '{
     "url": "https://emample.com/endpoint",
@@ -67,7 +67,7 @@ curl -X POST \
 ```shell
 curl -X GET \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/webhooks \
-  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf7a323' \
+  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf00000' \
   -H 'Content-Type: application/json'
 ```
 
@@ -105,7 +105,7 @@ curl -X GET \
 ```shell
 curl -X DELETE \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/webhooks/cd0d8b1d-b20a-41f0-80d1-faf2c4629a82 \
-  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf7a323' \
+  -H 'Authorization: Token 7be2eda859eec7ebf8c21256bc55f498002e872e6f6ddfcff655e18bccf00000' \
   -H 'Content-Type: application/json'
 ```
 
