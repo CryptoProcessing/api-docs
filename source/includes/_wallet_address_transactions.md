@@ -1,32 +1,61 @@
 # Wallet's address transactions 
 
 
-## The transaction object
+## The ETH transaction object
 
 
 Parameter             | Description
 ---------             | ---------
-`id`                  | Transaction id
-`tx_hash`             | Transaction hash
-`fromaddress`         | A ethereum address of the sender
-`toaddress`           | A ethereum address of the recipient
-`gasprice`            | Gas price
+`hash`                | Transaction hash
 `block_number`        | Block number where the transaction is included
 `confirmations_count` | Transaction confirmation count
 `description`         | Transaction description
-`data`                | Ethereum transaction data 
+`gasprice`            | Gas price
+`gaslimit`            | Gas limit
 `nonce`               | Ethereum transaction nonce
 `type`                | Transaction type
-`value`               | Transaction amount 
+`value`               | Transaction amount
+`sender_address`      | A ethereum address of the sender
+`receiver_address`    | A ethereum address of the recipient
+`statuses`            | Array of transaction statuses
+
+
+## The BTC transaction object
+
+
+Parameter             | Description
+---------             | ---------
+`hash`                | Transaction hash
+`amount`              | Transaction amount
+`block_number`        | Block number where the transaction is included
+`confirmations_count` | Transaction confirmation count
+`fee`                 | Transaction fee
+`type`                | Transaction type
+`description`         | Transaction description
+`receiver_addresses`  | Array of receiver addresses with amount
+`sender_address`      | Array of sender addresses with amount
 `statuses`            | Array of transaction statuses
 
 
 ## Get All Transactions
 
+Parameter             | Description
+---------             | ---------
+`wallet_id`           | Wallet ID
+`address   `          | Address
+`from_date`           | From date
+`to_date`             | Before date
+`page`                | Pagination starts at page 1, not at page 0 (page 0 will return the same results as page 1)
+`limit`               | A limit on the number if objects to be returned. (default 25, max 100)
+`fromaddress`         | Sender address
+`toaddress`           | Receiver address
+
+
 > GET https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions
 
 ```shell
-curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions"
+curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions?
+&from_date=2016-04-12T00:00:00.000Z&to_date=2019-04-30T00:00:00.01100Z&page=1&limit=10&fromaddress&toaddress
   -H "Authorization: Token <token>"
 ```
 
@@ -34,109 +63,83 @@ curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_i
 
 ```json
 {
-    "data": {
-        "transactions": [
-            {
-                "block_number": 3044794,
-                "confirmations_count": 5353,
-                "data": "0x",
-                "description": "Incoming transaction",
-                "fromaddress": "0x687422eEA2cB73B5d3e242bA5456b782919AFc85",
-                "gasprice": 18000000000,
-                "startgas": 314150, 
-                "id": 1,
-                "nonce": 460724,
-                "toaddress": "0xb8bdedee86f701da8ef631750a964dbbe8802c7a",
-                "tx_hash": "0x7a17815610b26c84baccab514460175f67549272cd8afb1dae2b4a7d419741ba",
-                "type": "receive",
-                "value": 1000000000000000000,
-                "statuses": [
-                    {
-                        "date": "Sun, 15 Apr 2018 19:39:32 GMT",
-                        "status": "in mempool"
-                    },
-                    {
-                        "date": "Sun, 15 Apr 2018 19:40:18 GMT",
-                        "status": "in block"
-                    }
-                ]
-            },
-            {
-                "block_number": 3045065,
-                "confirmations_count": 5082,
-                "data": "0x00",
-                "description": "Incoming transaction",
-                "fromaddress": "0xe17F97b518E9E8bBC9b72Ab88fd3f9db10BeA981",
-                "gasprice": 10000000000,
-                "startgas": 314150, 
-                "id": 2,
-                "nonce": 5913,
-                "toaddress": "0xb8bdedee86f701da8ef631750a964dbbe8802c7a",
-                "tx_hash": "0x48236cf22901c805c582b0db5437c7eee79741578dc364f2110b25538374d60c",
-                "type": "receive",
-                "value": 1000000000000000000,
-                "statuses": [
-                    {
-                        "date": "Sun, 15 Apr 2018 20:34:53 GMT",
-                        "status": "in mempool"
-                    },
-                    {
-                        "date": "Sun, 15 Apr 2018 20:34:55 GMT",
-                        "status": "in block"
-                    }
-                ]
-            }
-        ]
-    }
+    "_metadata": {
+        "total": 1,
+        "current_page": 1,
+        "last_page": 1,
+        "limit": 10,
+        "out_of_range": false
+    },
+    "data": [
+        {
+            "hash": "0x03c3885a9885794cfea15d5b49f53c3d8d1afe7cf6107581e60b043b7d9a9288",
+            "block_number": 4124533,
+            "confirmations_count": 664,
+            "description": "Incoming transaction",
+            "gasprice": 1000000000,
+            "gaslimit": 21000,
+            "nonce": 91,
+            "type": "receive",
+            "value": 100000000000000000,
+            "sender_address": "0x8abAb4093391340180CACe15404866499bb7D701",
+            "receiver_address": "0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336",
+            "statuses": [
+                {
+                    "status": "in mempool",
+                    "date": "Thu, 27 Sep 2018 13:02:46 GMT"
+                },
+                {
+                    "status": "in block",
+                    "date": "Thu, 27 Sep 2018 13:03:28 GMT"
+                }
+            ]
+        }
+    ]
 }
 ```
 > For the Bitcoin the above command returns JSON structured like this:
 
 ```json
 {
-    "data": {
-        "transactions": [
-            {
-                "amount": 87269815,
-                "block_number": 1287048,
-                "confirmations_count": 2725,
-                "created_at": "Thu, 01 Mar 2018 14:42:41 GMT",
-                "currency": "btc",
-                "description": "First",
-                "id": "7a23f17f7e01384599732bba37b6fb175a27cddddbba9a0bdffa56febc22672f",
-                "receiver_addresses": [
-                    {
-                        "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
-                        "amount": 87269815
-                    },
-                    {
-                        "address": "mvZK9A1JXE87puEbudsqPNxiye1StLZ7se",
-                        "amount": 99988700
-                    }
-                ],
-                "sender_addresses": [
-                    {
-                        "address": "mvZK9A1JXE87puEbudsqPNxiye1StLZ7se"
-                    }
-                ],
-                "statuses": [
-                    {
-                        "date": "Thu, 01 Mar 2018 14:42:41 GMT",
-                        "status": "non confirmed"
-                    },
-                    {
-                        "date": "Thu, 01 Mar 2018 14:42:42 GMT",
-                        "status": "in mempool"
-                    },
-                    {
-                        "date": "Thu, 01 Mar 2018 14:50:28 GMT",
-                        "status": "in block"
-                    }
-                ],
-                "type": "send"
-            }
-        ]
-    }
+    "_metadata": {
+        "total": 1,
+        "current_page": 1,
+        "last_page": 1,
+        "limit": 10,
+        "out_of_range": false
+    },
+    "data": [
+        {
+            "hash": "0e43f55fc601d5fcb6f6469fb8454e2dc807306d1166c0d31e096a824c5a807d",
+            "amount": 2000000,
+            "block_number": null,
+            "confirmations_count": 0,
+            "fee": null,
+            "type": "receive",
+            "description": "Incoming transaction",
+            "receiver_addresses": [
+                {
+                    "address": "my3h9MQKDdks9nMqcStKu58yMrz8uVucW5",
+                    "amount": 82705141
+                },
+                {
+                    "address": "2N8QznL4ifxkg5nUakQL4aAwNTCREWrDdgv",
+                    "amount": 2000000
+                }
+            ],
+            "sender_addresses": [
+                {
+                    "address": "n12CTVJYj5ecLYYH9wZiyyV7frVx1E7K9L"
+                }
+            ],
+            "statuses": [
+                {
+                    "status": "in mempool",
+                    "date": "Thu, 27 Sep 2018 13:42:35 GMT"
+                }
+            ]
+        }
+    ]
 }
 ```
 
