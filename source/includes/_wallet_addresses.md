@@ -6,13 +6,11 @@
 
 ```json
 {
-    "id": "fa3023cb-e0f1-441c-9e0c-4275e5423691",
-    "name": "name",
-    "address": "0xcb9b4199021dd923bae7948fb304b5450c2a92e3",
-    "final_balance": 100000000000000000,
-    "total_received": 100000000000000000,
-    "total_sent": 0,
-    "txs_count": 1
+    "address": "0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336",
+    "final_balance": "2.189445976325668992",
+    "total_received": "2.289446",
+    "total_sent": "0.100000023674331008",
+    "txs_count": 15
 }
 ```
 
@@ -56,24 +54,17 @@ curl -X GET \
     },
     "data": [
         {
-            "address": "0xcb9b4199021dd923bae7948fb304b5450c2a92e3",
-            "final_balance": 100000000000000000,
-            "total_received": 100000000000000000,
-            "total_sent": 0,
-            "txs_count": 1
+            "address": "0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336",
+            "final_balance": "2.189445976325668992",
+            "total_received": "2.289446",
+            "total_sent": "0.100000023674331008",
+            "txs_count": 15
         },
         {
-            "address": "0x910bf3df6d28c06ae9a555aa4b1a6533a2d7aadb",
-            "final_balance": 0,
-            "total_received": 0,
-            "total_sent": 0,
-            "txs_count": 0
-        },
-        {
-            "address": "0x5ce2e5deea926f346321167455e476329405528b",
-            "final_balance": 0,
-            "total_received": 0,
-            "total_sent": 0,
+            "address": "0x2a9f57585de532f675660f3ec3f73f41195fa8bb",
+            "final_balance": "0.0",
+            "total_received": "0.0",
+            "total_sent": "0.0",
             "txs_count": 0
         }
     ]

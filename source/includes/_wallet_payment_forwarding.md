@@ -11,7 +11,17 @@ Payment forwarding points to what address to transfer the arriving money.
     "id": "a1c28479-6e6c-4504-87ed-ea56ab09cafc",
     "address": "1LpkYGhsQEeE11KmsxdTmC6kM1vo1mk7b8",
     "blocks_count": 1,
-    "charge": 50000
+    "fee": "0.0000001"
+}
+```
+
+> Example
+
+```json
+{
+    "address": "0xE0bB087dc0F751F2b87E1323f1700F514EB635f0",
+    "blocks_count": 1,
+    "gas_price": "0.0003"
 }
 ```
 
@@ -19,12 +29,13 @@ Represents webhook object
  
 ### Attributes:
 
-Attribute | Description
---------- | -----------
-`id` | Payment forwarding ID
-`address` | The address to which money will be transferred
-`blocks_count` | The expected number of confirmations for the incoming transaction. Valid value from 0 to 100
-`charge` | GasPrice (wei) for ETH and Fee (satoshi) for BTC
+Attribute         | Description
+------------------|---------------
+`id`              | Payment forwarding ID
+`address`         | The address to which money will be transferred
+`blocks_count`    | The expected number of confirmations for the incoming transaction. Valid value from 0 to 100
+`gas_price`       | GasPrice for ETH
+`fee`             | Fee for BTC
 
 
 ## Create payment forwarding
@@ -41,7 +52,7 @@ curl -X POST \
   -d '{
     "address": "1LpkYGhsQEeE11KmsxdTmC6kM1vo1mk7b8",
     "blocks_count": 1,
-    "charge": 50000
+    "fee": "0.000001"
 }'
 ```
 
@@ -53,7 +64,7 @@ curl -X POST \
         "id": "d220089b-8cef-4374-968b-f1746354e840",
         "address": "1LpkYGhsQEeE11KmsxdTmC6kM1vo1mk7b8",
         "blocks_count": 1,
-        "charge": "50000.0"
+        "fee": "0.000001"
     }
 }
 ```
@@ -79,7 +90,7 @@ curl -X GET \
         "id": "d220089b-8cef-4374-968b-f1746354e840",
         "address": "1LpkYGhsQEeE11KmsxdTmC6kM1vo1mk7b8",
         "blocks_count": 1,
-        "charge": "50000.0"
+        "fee": "0.000001"
     }
 }
 ```
@@ -99,7 +110,7 @@ curl -X PUT \
   -d '{
     "address": "1N8hwYGo2uvFGr6z1Hysp3j7V9nBrZ1dmm",
     "blocks_count": 2,
-    "charge": 500000
+    "fee": 0.000002"
 }'
 ```
 
@@ -111,7 +122,7 @@ curl -X PUT \
         "id": "d220089b-8cef-4374-968b-f1746354e840",
         "address": "1N8hwYGo2uvFGr6z1Hysp3j7V9nBrZ1dmm",
         "blocks_count": 2,
-        "charge": "500000.0"
+        "charge": "0.000002"
     }
 }
 ```
