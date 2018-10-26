@@ -12,13 +12,14 @@ includes:
   - introduction
   - orders
   - orders_webhooks
-  - seed
   - wallets
   - wallet_addresses
   - wallet_address_transactions
   - wallet_transactions
   - wallet_webhooks
   - wallet_payment_forwarding
+  - wallet_seed
+  - wallet_contracts
   - rates
   - errors
 

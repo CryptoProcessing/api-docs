@@ -8,7 +8,7 @@ This is a documentation for public https://cryptoprocessing.io service. Before u
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/ping" \
-  -H "Authorization: Token fe7409b0c9b3fc37ec6dfa027e7e9ca943e37ed9d31b3d98d5c06bdec1b76c7d" \
+  -H "Authorization: <jwt token>" \
   -H "Idempotency-Key: 60Nk1zqhQJDoFnKj"
 ```
 
