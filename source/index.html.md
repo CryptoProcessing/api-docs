@@ -12,6 +12,7 @@ includes:
   - introduction
   - orders
   - orders_webhooks
+  - seed
   - wallets
   - wallet_addresses
   - wallet_address_transactions
