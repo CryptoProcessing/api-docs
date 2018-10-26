@@ -1,4 +1,4 @@
-# Seed
+# Wallet's seed
 
 ## Seed object
 

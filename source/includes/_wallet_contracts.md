@@ -30,8 +30,6 @@ Attribute | Description
 
 ## Create contract
 
-Creates contract
-
 > POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/contracts
 
 > Example request
@@ -66,8 +64,6 @@ curl -X POST \
 ```
 
 ## Return wallet's contracts
-
-Returns wallet's contracts
 
 > GET https://cryptoprocessing.io/api/v1/wallets/:wallet_id/contracts?page=1&limit=1
 
