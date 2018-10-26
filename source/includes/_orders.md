@@ -47,7 +47,7 @@ Creates order
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/orders" \
-  -H "Authorization: Token 4d0834297304689f7b7983007775610bdb856c7e15790e7d5c7f857e627fe568" \
+  -H "Authorization:  <jwt token>" \
   -H "Content-Type: application/json" \
   -H 'Idempotency-Key: bc4541e5-29b1-484e-89ad-ee9e7deba1c9' \
   -X POST \
