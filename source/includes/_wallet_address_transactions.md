@@ -204,6 +204,7 @@ Parameter             | Description
 `description`         | Transaction description
 `gas_price`           | GasPrice in ether
 `gas_limit`           | GasLimit
+`amount`              | Amount in ether
 
 > POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address/transactions
 

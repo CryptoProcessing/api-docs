@@ -1,85 +1,82 @@
 # Wallet's transactions
 
-The diff in comparison with Wallet's transactions is that you *need to specify the sender address(es)* (`from` field in requests)
+The diff in comparison with Wallet's address transactions is that you *need to specify the sender address(es)* (`from_` field in requests)
 
 
-## The transaction object
+## Create transaction (ETH)
 
+Parameter             | Description
+----------------------| ---------
+`from_ `              | Sender address 
+`to_ `                | Recipient address 
+`description`         | Transaction description
+`gas_price`           | GasPrice in ether
+`gas_limit`           | GasLimit
+`amount   `           | Amount in ether
+
+> POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/transactions
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets/acded3fc-5144-4726-b45b-d83fa56136b0/transactions \
+  -H 'Authorization: <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"from_": "0x822c09d5f89261c02d4fc0bb65bb45c7ea234efe",
+    "to_": "0x8abAb4093391340180CACe15404866499bb7D701",
+    "description": "Transaction [CURL]",		
+    "gas_price": "0.0000000045",
+    "gas_limit": 21000,
+    "amount": "0.0000000000356"
+}'
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "hash": "0x7a3ba664212845234dba3cc6ed37d1279226255d6d7878e2544a1b19f02d7f21"
+    }
+}
+```
+
+## Create transaction (BTC)
 
 Parameter             | Description
 ---------             | ---------
-`id`                  | Transaction id
-`tx_hash`             | Transaction hash
-`fromaddress`         | A ethereum address of the sender
-`toaddress`           | A ethereum address of the recipient
-`gasprice`            | Gas price
-`block_number`        | Block number where the transaction is included
-`confirmations_count` | Transaction confirmation count
+`from_ `              | Sender addresses
+`to_`                 | Recipient addresses with amount
 `description`         | Transaction description
-`data`                | Ethereum transaction data 
-`nonce`               | Ethereum transaction nonce
-`type`                | Transaction type
-`value`               | Transaction amount 
-`statuses`            | Array of transaction statuses
+`fee`                 | "fastestFee", "halfHourFee", "hourFee" or value in bitcoin
 
-
-## Create A Transaction
-
-> POST https://cryptoprocessing.io/api/v1/wallets/:id/transactions
+> POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/transactions
 
 ```shell
-curl -X POST "https://cryptoprocessing.io/api/v1/wallets/:id/transactions"
- -d '{
-        "from_": "0xe17F97b518E9E8bBC9b72Ab88fd3f9db10BeA981",
-        "to_": "0x687422eea2cb73b5d3e242ba5456b782919afc85",
-        "gasprice": 19000000000,
-        "startgas":314150,
-        "description": "from second address", 
-        "type": "send", 
-        "value": 60000000
-  }'
-  -H "Authorization: <jwt token>"
-```
-> The above command returns JSON structured like this:
-
-```json
-{
-    "data": {
-        "hash": "0x1cc19b3a7f80d12b992c5bed3f101548b374d2c9c4804fde4d02508c36e4fcbc"
-    }
-}
-```
-
-
-```shell
-curl -X POST "https://cryptoprocessing.io/api/v1/wallets/:id/transactions"
-  -d '{"from_":
-	[
-		"mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
-	],
-"fee": "fastestFee",
-"description": "First", 
-"type": "send", 
-"to_": [
-		{
-			"amount": "87269815", 
-			"address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
-		},
-    {
-      "amount": "99988700", 
-      "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
-    },
-	]
-}'
-   -H "Authorization: <jwt token>"
-
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets/45346ce2-b905-49f9-8463-cb0959c93784/transactions \
+  -H 'Authorization: <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "from_": ["2N8QznL4ifxkg5nUakQL4aAwNTCREWrDdgv", "2N14ygepzQ51ymqw4WnUnPcu4cQkJ29EVgj"],
+        "to_": [
+            {
+                "amount": "0.0001",
+                "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+            },
+            {
+                "amount": "0.000013",
+                "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB"
+            }
+        ],
+        "description": "Transaction [CURL]",
+        "fee": "hourFee"
+    }'
 ```
 > The above command returns JSON structured like this:
 ```json
 {
     "data": {
-        "hash": "402cc503487d6a26ffb4185ada70cce28d960060ec33dd519615df96eaabadea"
+        "hash": "44ea4b8e6ba8d4408e5d4d0e101a7c0cb0ad4391350dd1d885b4621a32ff9d30"
     }
 }
 ```
-
