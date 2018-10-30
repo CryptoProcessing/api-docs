@@ -74,3 +74,15 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
 }
 ```
 
+## Test Cards
+
+For test transactions at `https://testnet.cryptoprocessing.io` you may use:
+
+Card Number | Description
+--------- | -----------
+`4000 0000 0000 0002` | will be CONFIRMED as 3DS transaction
+`5555 5555 5555 4444` | will be DECLINED as 3DS transaction
+`4000 0000 0000 0077` | will be CONFIRMED as non-3DS transaction
+`5555 5555 5555 4477` | will be DECLINED as non-3DS transaction
+
+Testnet crypto will be transferred to your Merchant Wallet.
