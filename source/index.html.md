@@ -19,7 +19,6 @@ includes:
   - wallet_webhooks
   - wallet_payment_forwarding
   - wallet_seed
-  - wallet_contracts
   - rates
   - errors
 
