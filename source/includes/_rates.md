@@ -25,7 +25,10 @@ curl "https://cryptoprocessing.io/api/v1/rates/acquiring?gateway=cryptocard" \
 {
     "data": {
         "EUR": {
-            "BTC": 6444.515463917526
+            "BTC": 6189.737373737374
+        },
+        "USD": {
+            "BTC": 7071.131313131313
         }
     }
 }
