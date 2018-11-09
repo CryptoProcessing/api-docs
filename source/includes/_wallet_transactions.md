@@ -40,6 +40,45 @@ curl -X POST \
 }
 ```
 
+## Create transaction (TOKEN)
+
+Parameter                       | Description
+--------------------------------| ---------
+`from_ `                        | Sender address
+`to_ `                          | Recipient address
+`description`                   | Transaction description
+`gas_price`                     | GasPrice in ether
+`gas_limit`                     | GasLimit
+`amount`                        | Amount in tokens
+`use_liquidity_wallet_for_fee`  | Payment of commission with liquidity wallet (true/false)
+
+> POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/transactions
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets/ae8e53dd-c42e-43b1-9b6f-eecb2c4aa934/transactions \
+  -H 'Authorization: <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "from_": "0x2c6a31f12c1b10ed0506afb104d4aab6be3333b1",
+    "to_": "0x8abAb4093391340180CACe15404866499bb7D701",
+    "description": "Transaction [CURL]",
+    "gas_price": "0.0000000001",
+    "gas_limit": 150000,
+    "amount": "100.005",
+    "use_liquidity_wallet_for_fee": false
+}'
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "hash": "0x1cc19b3a7f80d12b992c5bed3f101548b374d2c9c4804fde4d02508c36e4fcbc"
+    }
+}
+```
+
 ## Create transaction (BTC)
 
 Parameter             | Description
