@@ -1,7 +1,7 @@
 # Wallet's address transactions 
 
 
-## The ETH transaction object
+## The ETH or TOKEN transaction object
 
 
 Parameter             | Description
@@ -37,7 +37,7 @@ Parameter             | Description
 `statuses`            | Array of transaction statuses
 
 
-## Get All Transactions
+## Get All transactions
 
 Parameter             | Description
 ---------             | ---------
@@ -156,7 +156,7 @@ curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_i
 ```
 
 
-## Create BTC Transaction
+## Create BTC transaction
 
 Parameter             | Description
 ---------             | ---------
@@ -196,7 +196,7 @@ curl -X POST \
 }
 ```
 
-## Create ETH Transaction
+## Create ETH transaction
 
 Parameter             | Description
 ----------------------| ---------
@@ -219,6 +219,43 @@ curl -X POST \
     "gas_price": "0.00000000001",
     "gas_limit": 21000,
     "amount": "0.0000000505"
+}'
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "hash": "0x1cc19b3a7f80d12b992c5bed3f101548b374d2c9c4804fde4d02508c36e4fcbc"
+    }
+}
+```
+
+## Create TOKEN transaction
+
+Parameter                       | Description
+--------------------------------| ---------
+`to_ `                          | Recipient address
+`description`                   | Transaction description
+`gas_price`                     | GasPrice in ether
+`gas_limit`                     | GasLimit
+`amount`                        | Amount in tokens
+`use_liquidity_wallet_for_fee`  | Payment of commission with liquidity wallet (true/false)
+
+> POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address/transactions
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets/ae8e53dd-c42e-43b1-9b6f-eecb2c4aa934/addresses/0xf019ea768e154219935ff957f2216c66d9eb802a/transactions \
+  -H 'Authorization: <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "to_": "0x8abAb4093391340180CACe15404866499bb7D701",
+    "description": "Transaction [CURL]",
+    "gas_price": "0.0000000001",
+    "gas_limit": 150000,
+    "amount": "100.005",
+    "use_liquidity_wallet_for_fee": false
 }'
 ```
 > The above command returns JSON structured like this:
