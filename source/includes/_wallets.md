@@ -46,7 +46,7 @@ Attribute | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: 7952c055-b8a1-498e-b0ea-737985e954c0' \
   -d '{
@@ -84,7 +84,7 @@ curl -X POST \
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/seed \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: <token>' \
   -d '{
@@ -124,7 +124,7 @@ curl -X POST \
 ```shell
 curl -X GET \
   https://cryptoprocessing.io/api/v1/wallets/f17dc388-c93d-4934-87ca-b830151cb837 \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json'
 ```
@@ -157,7 +157,7 @@ curl -X GET \
 ```shell
 curl -X GET \
   'https://cryptoprocessing.io/api/v1/wallets?page=1&limit=20' \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H "Content-Type: application/json"
 ```
 
@@ -243,7 +243,7 @@ This request takes longer to execute than the request without balances
 ```shell
 curl -X GET \
   'https://cryptoprocessing.io/api/v1/wallets?page=1&limit=20&extra[]=balance' \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H "Content-Type: application/json"
 ```
 

@@ -56,7 +56,7 @@ Parameter             | Description
 ```shell
 curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions?
 &from_date=2016-04-12T00:00:00.000Z&to_date=2019-04-30T00:00:00.01100Z&page=1&limit=10&fromaddress&toaddress
-  -H "Authorization: <jwt token>"
+  -H "Authorization: Token <jwt token>"
 ```
 
 > For the Ethereum the above command returns JSON structured like this:
@@ -169,7 +169,7 @@ Parameter             | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/45346ce2-b905-49f9-8463-cb0959c93784/addresses/2N8QznL4ifxkg5nUakQL4aAwNTCREWrDdgv/transactions \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "to_": [
@@ -211,7 +211,7 @@ Parameter             | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/568c5ed2-10c5-4a80-b91d-5a80f8e1f7e0/addresses/0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336/transactions \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "to_": "0x8abAb4093391340180CACe15404866499bb7D701",
@@ -247,7 +247,7 @@ Parameter                       | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/ae8e53dd-c42e-43b1-9b6f-eecb2c4aa934/addresses/0xf019ea768e154219935ff957f2216c66d9eb802a/transactions \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "to_": "0x8abAb4093391340180CACe15404866499bb7D701",

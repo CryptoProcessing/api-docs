@@ -47,7 +47,7 @@ curl "http://example.com/api/account"
         "name": "New account",
          "type": "multisig",
          "currency": "BTC"}'
-  -H "Authorization: <jwt token>"
+  -H "Authorization: Token <jwt token>"
 ```
 
 
@@ -82,7 +82,7 @@ curl "http://example.com/api/account"
   -X POST
   -d '{"email": "mail@example.com",
         "name": "Old account",
-  -H "Authorization: <jwt token>"
+  -H "Authorization: Token <jwt token>"
 ```
 
 
