@@ -47,7 +47,7 @@ Attribute         | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/payment_forwarding \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "address": "1LpkYGhsQEeE11KmsxdTmC6kM1vo1mk7b8",
@@ -78,7 +78,7 @@ curl -X POST \
 ```shell
 curl -X GET \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/payment_forwarding \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json'
 ```
 
@@ -105,7 +105,7 @@ curl -X GET \
 ```shell
 curl -X PUT \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/payment_forwarding \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "address": "1N8hwYGo2uvFGr6z1Hysp3j7V9nBrZ1dmm",
@@ -137,7 +137,7 @@ curl -X PUT \
 ```shell
 curl -X DELETE \
   https://cryptoprocessing.io/api/v1/wallets/1cf72914-d5fc-425b-ad72-ca9320d4cbcf/payment_forwarding \
-  -H 'Authorization: <jwt token>' \
+  -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json'
 ```
 

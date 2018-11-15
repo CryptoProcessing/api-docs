@@ -15,7 +15,7 @@ Attribute | Description
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/rates/acquiring?gateway=cryptocard" \
-  -H "Authorization: <jwt token>" \
+  -H "Authorization: Token <jwt token>" \
   -X GET
 ```
 
