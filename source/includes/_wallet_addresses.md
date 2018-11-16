@@ -72,6 +72,34 @@ curl -X GET \
 ```
 
 
+## Return wallet address
+
+> GET https://cryptoprocessing.io/api/v1/wallets/:id/addresses/:address
+
+> Example request
+
+```shell
+curl -X GET \
+  'https://cryptoprocessing.io/api/v1/wallets/c6136ee4-eabd-4cbe-aed8-ecd0ffdbcc4e/addresses/0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336' \
+  -H 'Authorization: Token <jwt token>' \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "address": "0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336",
+        "final_balance": "2.189445976325668992",
+        "total_received": "2.289446",
+        "total_sent": "0.100000023674331008",
+        "txs_count": 15
+    }
+}
+```
+
+
 ## Create address
 
 > POST https://cryptoprocessing.io/api/v1/wallets/:id/addresses
