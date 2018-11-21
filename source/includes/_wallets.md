@@ -90,7 +90,7 @@ curl -X POST \
   -H 'Authorization: Token <jwt token>' \
   -H 'Content-Type: application/json' \
   -d '{
-	"name": "Token wallet from ETH wallet",
+	"name": "Ethereum Token wallet from Ethereum wallet",
 	"currency": "ABX",
 	"human": "Human name",
 	"description": "Some description",
