@@ -75,6 +75,48 @@ curl -X POST \
 }
 ```
 
+
+## Create wallet from parent wallet
+
+You can create a wallet for Ethereum Token based on your Ethereum wallet. Or, based on a Ethereum Token wallet, create an Ethereum wallet.
+
+> POST https://cryptoprocessing.io/api/v1/wallets
+
+> Example request
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets \
+  -H 'Authorization: Token <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"name": "Token wallet from ETH wallet",
+	"currency": "ABX",
+	"human": "Human name",
+	"description": "Some description",
+	"parent_wallet": "44efc654-b40f-44e0-8e70-b3fcffbf5b98"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "id": "2d7964ab-f59e-4e4d-8f2b-aa6371132c82",
+        "name": "Ethereum Token wallet from Ethereum wallet",
+        "currency": "ABX",
+        "human": "Human name",
+        "description": "Some description",
+        "system_fee_percent": "1.0",
+        "merchant_fee_percent": "0.0",
+        "created_at": "2018-11-21T09:51:57.153Z",
+        "updated_at": "2018-11-21T09:51:57.153Z"
+    }
+}
+```
+
+
 ## Create wallet by seed phrase
 
 > GET https://cryptoprocessing.io/api/v1/wallets/:wallet_id/seed
