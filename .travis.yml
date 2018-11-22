@@ -14,12 +14,11 @@ cache:
 branches:
   only:
     - master
-    - staging
 stages:
   - name: tests
     if: type = pull_request
   - name: deploy
-    if: branch in (master, staging) AND type != pull_request
+    if: branch in (master) AND type != pull_request
 jobs:
   include:
     - stage: tests
