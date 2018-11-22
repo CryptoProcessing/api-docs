@@ -1,10 +1,120 @@
-sudo: false
-
 language: ruby
+addons:
+  postgresql: "9.5"
+services:
+  - postgresql
+  - redis-server
+# We're trying to cache bundler gems
+cache:
+  directories:
+    - vendor/bundle
+    - /home/travis/.rvm/
+    # Needed for speed up pyenv installation
+    - /opt/pyenv
+branches:
+  only:
+    - master
+    - staging
+stages:
+  - name: tests
+    if: type = pull_request
+  - name: deploy
+    if: branch in (master, staging) AND type != pull_request
+jobs:
+  include:
+    - stage: tests
+      name: "Test given pull-request"
+      env:
+        - RAILS_ENV=test
+      script: |
+        psql -c 'create database pay_cryptoprocessing_test;' -U postgres
+        bundle install
+        rails db:migrate
+        bundle exec rspec
+    - stage: deploy
+      name: "Deploy code to target servers"
+      script: |
+        # As this build is based on Ruby, we need to install needed version of
+        # Python first
+        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+        pyenv install 3.6.0
+        pyenv shell 3.6.0
+        # We're installing expect cause we need to pass ssh password to ssh-add and
+        # Travis Ubuntu ssh-add version doesn't support new keys which allow to pass
+        # secrets different way than thru 'expect' utility
+        sudo apt-get install expect
+        chmod 600 deploy/id_rsa
 
-rvm:
-  - 2.3.3
-  - 2.4.0
+        # Getting ssh socket and agent pid to be able to connect to it later
+        eval `ssh-agent -s`
 
-cache: bundler
-script: bundle exec middleman build
+        # SSH_PASS is defined in Travis itself and contains the password to the
+        # private key. Ssh private key was created with thoughts in mind that it
+        # will be tried to bruteforce by some evil people, so it was created like
+        # > ssh-keygen -t rsa -b 2048 -C machine-gunner -o -f ./id_rsa -a 200
+        # which means it take about 2 seconds to decrypt with proper secret on
+        # Core i7 (and it will take a long time to bruteforce it)
+        echo 'echo $SSH_PASS' > deploy/ssh_pass
+        chmod 700 deploy/ssh_pass
+
+        # Pass SSH secret thru 'expect' utility. Beware that this SSH key is needed
+        # to ONLY get access to needed ansible repositories with deployment logic.
+        # Public part of this key is NEVER placed to target servers, so there is
+        # actually no much sense to bruteforce it at all
+        expect -c "set timeout 10; spawn ssh-add $(pwd)/deploy/id_rsa ; expect -re \"Enter passphrase for.*\" ; send \"$SSH_PASS\r\" ; expect eof"
+
+        pip install ansible==2.6
+        # Actual deployment logic lays here
+        git clone git@github.com:oomag/ansible_controller.git
+
+        cd ansible_controller
+        # Getting roles needed to deploy
+        ./tools/get-roles.sh deploy-docs-roles.yml
+
+        # ANSIBLE_VAULT_SECRET is defined in Travis itself
+        echo $ANSIBLE_VAULT_SECRET > project.vault
+
+        # Repo name looks like 'oomag/something' and we need only 'something', so cut
+        # it out from here
+        export REPONAME=`echo $TRAVIS_REPO_SLUG | cut -d "/" -f 2`
+
+        # Repo name can have dashes in it, so convert them to underscores as it
+        # will be a part of host vars filename
+        export REPONAME=`echo ${REPONAME/-/_}`
+
+        # Overall TRAVIS_BRANCH looks okay, but as it can have slash in name, we need
+        # to convert it to underscores as it will be actually a part of host vars
+        # filename
+        export BRANCHNAME=`echo ${TRAVIS_BRANCH/\//_}`
+
+        # Run predeploy task. All it actually doing is to get private SSH key from
+        # ansible configs (and it is encrypted with Ansible Vault, so you cannot
+        # just get it from there) and place it to the filesystem. 'server_type' var
+        # defines prefix for SSH private key var in ansible variables for given
+        # host - it is needed for cases when you need different deploys for the same
+        # project
+        ansible-playbook -i inventory/oomag.hosts run-travis-predeploy.yml -e "server_type=$SERVER_TYPE ansible_host=localhost" --limit ${TARGET_HOSTVARS}_${REPONAME}_${BRANCHNAME} --vault-id $(pwd)/project.vault --user $TARGET_USER
+
+        # Previous command creates target_server.key ssh key needed for deploy. This
+        # key is used to reach target server with code itself.
+        ssh-add $(pwd)/target_server.key
+
+        # Now we can run real deploy. Actual deploy depends on branch name and repo
+        # name.
+
+        # So "${TARGET_HOSTVARS}_${REPONAME}_${BRANCHNAME}" usually looks like
+        # "azure_consolidator_ng_cryptoprocessing_staging"
+        ansible-playbook -i inventory/oomag.hosts ${ANSIBLE_PLAYBOOK} -e "server_type=$SERVER_TYPE" --limit ${TARGET_HOSTVARS}_${REPONAME}_${BRANCHNAME} --vault-id $(pwd)/project.vault --user $TARGET_USER --skip-tags 'nginx, tls'
+
+        # We have to install nginx/tls after main roles cause other way nginx won't start
+        ansible-playbook -i inventory/oomag.hosts ${ANSIBLE_PLAYBOOK} -e "server_type=$SERVER_TYPE" --limit ${TARGET_HOSTVARS}_${REPONAME}_${BRANCHNAME} --vault-id $(pwd)/project.vault --user $TARGET_USER --tags 'nginx, tls'
+
+        # So there are all needed vars we have to export to Travis:
+        # SSH_PASS - secret to ssh private key to get access to ansible repos
+        # ANSIBLE_VAULT_SECRET - ansible secret to decrypt vaulted vars
+        # ANSIBLE_PLAYBOOK - name of ansible playbook, like run-rails.yml
+        # SERVER_TYPE - prefix to extract proper private ssh key to target server
+        # TARGET_HOSTVARS - first part of name of ansible playbook to run upon
+        #   Overall name looks like azure_ng_consolidator_must_staging, so target
+        #   hostvars will look like `azure_ng_consolidator`
+        # TARGET_USER - user to login with to target server
