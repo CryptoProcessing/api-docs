@@ -75,8 +75,6 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
 ```
 
 
-
-
 ## Return order
 
 Returns order
