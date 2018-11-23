@@ -47,7 +47,7 @@ Creates order
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/orders" \
-  -H "Authorization:  <jwt token>" \
+  -H "Authorization: Token <jwt token>" \
   -H "Content-Type: application/json" \
   -H 'Idempotency-Key: bc4541e5-29b1-484e-89ad-ee9e7deba1c9' \
   -X POST \
@@ -73,6 +73,46 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
   }
 }
 ```
+
+
+
+
+## Return order
+
+Returns order
+
+> GET https://cryptoprocessing.io/api/v1/orders/:order_id
+
+> Example request
+
+```shell
+curl -X GET \
+  https://cryptoprocessing.io/api/v1/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3 \
+  -H 'Authorization: Token <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "id": "9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3",
+    "created_at": "2018-08-17T18:39:12.106Z",
+    "updated_at": "2018-08-17T18:39:13.217Z",
+    "amount": "50.0",
+    "currency": "EUR",
+    "status": "NEW",
+    "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
+    "external_payout_currency": "BTC",
+    "secret_for_success_redirect": "e5f295460e5e7b9c57fb2413f0e67598",
+    "secret_for_fail_redirect": "023a4207e7286c216396b8508ddfdd0b"
+    "payment_url": "http://cryptoprocessing.io/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3/pay"
+  }
+}
+```
+
 
 ## Test Cards
 
