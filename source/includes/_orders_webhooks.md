@@ -15,7 +15,7 @@
         "status": "NEW",
         "external_payout_address": null,
         "external_payout_currency": "BTC",
-        "idempotency_key": "fuckinguniquekey1"
+        "idempotency_key": "uniquekey1"
     }
 }
 ```
