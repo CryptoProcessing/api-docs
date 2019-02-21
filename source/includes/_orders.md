@@ -12,10 +12,11 @@
     "amount": 40.0,
     "currency": "EUR",
     "status": "SUCCESS",
+    "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
+    "external_payout_amount": "1.105",
+    "external_payout_currency": "BTC",
     "secret_for_success_redirect": "some_secret_key1",
     "secret_for_fail_redirect": "some_secret_key2",
-    "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
-    "external_payout_currency": "BTC"
 }
 ```
 
@@ -31,8 +32,10 @@ Attribute | Description
 `amount` | Order's amount value, big float (up to 18 decimals)
 `currency` | Order's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD"]
 `status` | Order's status. Available options: ["NEW", "PROCESSING", "PENDING", "SUCCESS", "FAIL"]
-`external_payout_address` | Payout address related to pyout currency
+`external_payout_address` | Payout address related to payout currency
+`external_payout_amount` | Payout amount to external address
 `external_payout_currency` | Payout currency (what merchant takes)
+`gas_limit` | Gas limit for external ethereum transaction
 `secret_for_success_redirect` | Some secret key which will be included in GET params for success redirect endpoint
 `secret_for_fail_redirect` | Some secret key which will be included in GET params for fail redirect endpoint
 
@@ -40,6 +43,17 @@ Attribute | Description
 ## Create order
 
 Creates order
+
+### Parameters:
+
+Parameter | Description
+--------- | -----------
+`amount` | Order's amount value, big float (up to 18 decimals) **(required)**
+`currency` | Order's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD"] **(required)**
+`external_payout_currency` | Payout currency (what merchant takes)
+`external_payout_address` | Payout address related to payout currency
+`external_payout_amount` | Payout amount to external address
+`gas_limit` | Gas limit for external ethereum transaction
 
 > POST https://cryptoprocessing.io/api/v1/orders
 
@@ -103,6 +117,7 @@ curl -X GET \
     "currency": "EUR",
     "status": "NEW",
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
+    "external_payout_amount":null,
     "external_payout_currency": "BTC",
     "secret_for_success_redirect": "e5f295460e5e7b9c57fb2413f0e67598",
     "secret_for_fail_redirect": "023a4207e7286c216396b8508ddfdd0b"
@@ -110,6 +125,12 @@ curl -X GET \
   }
 }
 ```
+
+## Payment link
+
+By default, the order is processed using "crypto_card", you can change this behavior by adding a parameter "via" to payment link.
+
+Available options of "via" parameter: "indacoin", "fx", "crypto_card", "etelaranta"
 
 
 ## Test Cards
