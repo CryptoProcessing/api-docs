@@ -8,13 +8,13 @@
 
 Attribute | Description
 --------- | -----------
-`gateway` | Required, available options: "cryptocard", "cryptoprocessing", or "wire"
+`gateway` | Required, available options: "crypto_processing", "crypto_card", "wire", "indacoin", "fx", "etelaranta"
 `direction` | Required, available options: "acquiring", "processing"
 
 > Example Request
 
 ```shell
-curl "https://cryptoprocessing.io/api/v1/rates/acquiring?gateway=cryptocard" \
+curl "https://cryptoprocessing.io/api/v1/rates/acquiring?gateway=etelaranta" \
   -H "Authorization: Token <jwt token>" \
   -X GET
 ```
