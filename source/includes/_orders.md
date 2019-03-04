@@ -12,6 +12,9 @@
     "amount": 40.0,
     "currency": "EUR",
     "status": "SUCCESS",
+    "customer": {
+      "email": "customer@example.com"
+    },
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
     "external_payout_amount": "1.105",
     "external_payout_currency": "BTC",
@@ -32,6 +35,7 @@ Attribute | Description
 `amount` | Order's amount value, big float (up to 18 decimals)
 `currency` | Order's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD"]
 `status` | Order's status. Available options: ["NEW", "PROCESSING", "PENDING", "SUCCESS", "FAIL"]
+`customer` | Customer's info. Available hash keys: ["email"]
 `external_payout_address` | Payout address related to payout currency
 `external_payout_amount` | Payout amount to external address
 `external_payout_currency` | Payout currency (what merchant takes)
@@ -54,6 +58,7 @@ Parameter | Description
 `external_payout_address` | Payout address related to payout currency
 `external_payout_amount` | Payout amount to external address
 `gas_limit` | Gas limit for external ethereum transaction
+`customer` | Customer's info. Available hash keys: ["email"]
 
 > POST https://cryptoprocessing.io/api/v1/orders
 
@@ -65,7 +70,14 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
   -H "Content-Type: application/json" \
   -H 'Idempotency-Key: bc4541e5-29b1-484e-89ad-ee9e7deba1c9' \
   -X POST \
-  -d '{ "amount":50, "currency":"EUR", "external_payout_currency":"BTC", "external_payout_address":"2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M" }'
+  -d '{ "amount":50,
+        "currency":"EUR",
+        "external_payout_currency":"BTC",
+        "external_payout_address":"2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
+        "customer": {
+          "email": "customer@example.com"
+        }
+      }'
 ```
 
 > The above command returns JSON structured like this:
@@ -79,6 +91,9 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
     "amount": "50.0",
     "currency": "EUR",
     "status": "NEW",
+    "customer": {
+      "email": "customer@example.com"
+    },
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
     "external_payout_currency": "BTC",
     "secret_for_success_redirect": "e5f295460e5e7b9c57fb2413f0e67598",
@@ -116,6 +131,9 @@ curl -X GET \
     "amount": "50.0",
     "currency": "EUR",
     "status": "NEW",
+    "customer": {
+      "email": "customer@example.com"
+    },
     "external_payout_address": "2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
     "external_payout_amount":null,
     "external_payout_currency": "BTC",
