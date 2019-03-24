@@ -267,3 +267,34 @@ curl -X POST \
     }
 }
 ```
+
+## Create USDT transaction
+
+Parameter             | Description
+---------             | ---------
+`to_`                 | Recipient addresses
+`amount`              | Amount
+`description`         | Transaction description
+
+> POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address/transactions
+
+```shell
+curl -X POST \
+  https://cryptoprocessing.io/api/v1/wallets/73b819fb-0332-24ec-8ac9-49a247c3299a/addresses/2N8QznL4ifxkg5nUakQL4aAwNTCREWrDdgv/transactions \
+  -H 'Authorization: Token <jwt token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "to_": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
+    "amount": "0.01",
+    "description": "Transaction [CURL]"
+}'
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": {
+        "hash": "2d4217e45c1e3ff6a1257a95662eebce30bb6ac195e874fb3fbcd337dff5f464"
+    }
+}
+```
