@@ -27,7 +27,7 @@ Attribute | Description
 --------- | -----------
 `id` | Wallet ID
 `name` | Wallet name
-`currency` | Wallet's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD"]
+`currency` | Wallet's currency. Available options: ["BTC", "ETH", "EUR", "RUB", "USD", "USDT"]
 `human` | Wallet full name
 `description` | Wallet description
 `system_fee_percent` | Processing fee percent 
