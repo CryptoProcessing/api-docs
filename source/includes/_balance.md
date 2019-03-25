@@ -52,7 +52,7 @@ Attribute | Description
 
 ```shell
 curl "http://example.com/api/balance?currency=BTC"
-  -H "Authorization: Token <jwt token>"
+  -H "Authorization: Token <token>"
 ```
 
 > The above command returns JSON structured like this:

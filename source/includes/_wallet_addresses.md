@@ -37,7 +37,7 @@ Attribute | Description
 ```shell
 curl -X GET \
   'https://cryptoprocessing.io/api/v1/wallets/c6136ee4-eabd-4cbe-aed8-ecd0ffdbcc4e/addresses?page=1&limit=25' \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H "Content-Type: application/json"
 ```
 
@@ -81,7 +81,7 @@ curl -X GET \
 ```shell
 curl -X GET \
   'https://cryptoprocessing.io/api/v1/wallets/c6136ee4-eabd-4cbe-aed8-ecd0ffdbcc4e/addresses/0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336' \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H "Content-Type: application/json"
 ```
 

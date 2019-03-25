@@ -27,7 +27,7 @@ Attribute      | Description
 ```shell
 curl -X GET \
   https://cryptoprocessing.io/api/v1/wallets/45346ce2-b905-49f9-8463-cb0959c93784/seed \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' 
 ```
 
@@ -51,7 +51,7 @@ curl -X GET \
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/seed \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' \
   -H 'Idempotency-Key: <token>' \
   -d '{
