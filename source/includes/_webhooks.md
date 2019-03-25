@@ -36,7 +36,7 @@ Returns list of webhooks
 
 ```shell
 curl "http://example.com/api/webhooks"
-  -H "Authorization: Token <jwt token>"
+  -H "Authorization: Token <token>"
 ```
 
 > Example response

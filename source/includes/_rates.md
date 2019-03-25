@@ -15,7 +15,7 @@ Attribute | Description
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/rates/acquiring?gateway=etelaranta" \
-  -H "Authorization: Token <jwt token>" \
+  -H "Authorization: Token <token>" \
   -X GET
 ```
 

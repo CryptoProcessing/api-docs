@@ -19,7 +19,7 @@ Parameter             | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/acded3fc-5144-4726-b45b-d83fa56136b0/transactions \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' \
   -d '{
 	"from_": "0x822c09d5f89261c02d4fc0bb65bb45c7ea234efe",
@@ -57,7 +57,7 @@ Parameter                       | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/ae8e53dd-c42e-43b1-9b6f-eecb2c4aa934/transactions \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' \
   -d '{
     "from_": "0x2c6a31f12c1b10ed0506afb104d4aab6be3333b1",
@@ -93,7 +93,7 @@ Parameter             | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/45346ce2-b905-49f9-8463-cb0959c93784/transactions \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' \
   -d '{
         "from_": ["2N8QznL4ifxkg5nUakQL4aAwNTCREWrDdgv", "2N14ygepzQ51ymqw4WnUnPcu4cQkJ29EVgj"],
@@ -134,7 +134,7 @@ Parameter             | Description
 ```shell
 curl -X POST \
   https://cryptoprocessing.io/api/v1/wallets/73b809fb-0332-44ec-1ac9-49a247c3292a/transactions \
-  -H 'Authorization:  Token <jwt token>' \
+  -H 'Authorization:  Token <token>' \
   -H 'Content-Type: application/json' \
   -d '{
       "from_": "1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX",

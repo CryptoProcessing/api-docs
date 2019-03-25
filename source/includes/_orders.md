@@ -66,7 +66,7 @@ Parameter | Description
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/orders" \
-  -H "Authorization: Token <jwt token>" \
+  -H "Authorization: Token <token>" \
   -H "Content-Type: application/json" \
   -H 'Idempotency-Key: bc4541e5-29b1-484e-89ad-ee9e7deba1c9' \
   -X POST \
@@ -115,7 +115,7 @@ Returns order
 ```shell
 curl -X GET \
   https://cryptoprocessing.io/api/v1/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3 \
-  -H 'Authorization: Token <jwt token>' \
+  -H 'Authorization: Token <token>' \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache'
 ```
