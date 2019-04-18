@@ -127,7 +127,6 @@ Parameter             | Description
 `from_ `              | Sender addresses
 `to_`                 | Recipient addresses
 `amount`              | Amount
-`description`         | Transaction description
 
 > POST https://cryptoprocessing.io/api/v1/wallets/:wallet_id/transactions
 
@@ -139,8 +138,7 @@ curl -X POST \
   -d '{
       "from_": "1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX",
       "to_": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
-      "amount": "0.01",
-      "description": "Transaction [CURL]"
+      "amount": "0.01"
 }'
 ```
 > The above command returns JSON structured like this:
