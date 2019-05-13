@@ -59,6 +59,7 @@ Parameter | Description
 `external_payout_amount` | Payout amount to external address
 `gas_limit` | Gas limit for external ethereum transaction
 `customer` | Customer's info. Available hash keys: ["email"]
+`check_amount` | The need for an approximate check of the correspondence between the amount of the fiat and the amount in cryptocurrency
 
 > POST https://cryptoprocessing.io/api/v1/orders
 
@@ -76,7 +77,8 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
         "external_payout_address":"2N5kUa6RqcDx8NZsuLQFkifumUz9gCWC54M",
         "customer": {
           "email": "customer@example.com"
-        }
+        },
+        "check_amount": true
       }'
 ```
 
@@ -98,7 +100,8 @@ curl "https://cryptoprocessing.io/api/v1/orders" \
     "external_payout_currency": "BTC",
     "secret_for_success_redirect": "e5f295460e5e7b9c57fb2413f0e67598",
     "secret_for_fail_redirect": "023a4207e7286c216396b8508ddfdd0b"
-    "payment_url": "http://cryptoprocessing.io/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3/pay"
+    "payment_url": "http://cryptoprocessing.io/orders/9bf8fec7-bc12-446f-a1a4-7ec4d5caa3d3/pay",
+    "check_amount": true
   }
 }
 ```
