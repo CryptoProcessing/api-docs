@@ -59,7 +59,7 @@ Parameter | Description
 `external_payout_amount` | Payout amount to external address
 `gas_limit` | Gas limit for external ethereum transaction
 `customer` | Customer's info. Available hash keys: ["email"]
-`check_amount` | The need for an approximate check of the correspondence between the amount of the fiat and the amount in cryptocurrency
+`check_amount` | Additional verification of the approximate correspondence of the fiat amount to the amount in cryptocurrency
 
 > POST https://cryptoprocessing.io/api/v1/orders
 
