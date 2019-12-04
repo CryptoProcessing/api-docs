@@ -17,6 +17,7 @@ includes:
   - wallet_address_transactions
   - wallet_transactions
   - wallet_webhooks
+  - exchange_callbacks
   - wallet_payment_forwarding
   - wallet_seed
   - rates
