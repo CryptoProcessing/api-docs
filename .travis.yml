@@ -26,6 +26,7 @@ jobs:
       env:
         - RAILS_ENV=test
       script: |
+        gem install bundler:1.16.1
         psql -c 'create database pay_cryptoprocessing_test;' -U postgres
         bundle install
         rails db:migrate
