@@ -19,6 +19,8 @@ stages:
     if: type = pull_request
   - name: deploy
     if: branch in (master) AND type != pull_request
+before_install:
+  - gem install bundler:1.16.1
 jobs:
   include:
     - stage: tests
