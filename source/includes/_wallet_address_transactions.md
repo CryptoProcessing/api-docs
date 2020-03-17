@@ -18,6 +18,7 @@ Parameter             | Description
 `sender_address`      | A ethereum address of the sender
 `receiver_address`    | A ethereum address of the recipient
 `statuses`            | Array of transaction statuses
+`forwarded_for`       | Hash of the transaction for which the forwarding was made
 
 
 ## The BTC transaction object
@@ -35,6 +36,7 @@ Parameter             | Description
 `receiver_addresses`  | Array of receiver addresses with amount
 `sender_address`      | Array of sender addresses with amount
 `statuses`            | Array of transaction statuses
+`forwarded_for`       | Hash of the transaction for which the forwarding was made
 
 
 ## Get All transactions
@@ -83,6 +85,7 @@ curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_i
             "value": "2.0",
             "sender_address": "0x8abAb4093391340180CACe15404866499bb7D701",
             "receiver_address": "0x05cb0eab06fbb7ab1aa5708bab3bce35b6bff336",
+            "forwarded_for": "0x11a37d55786b781b01dda4405646c43bcc36574b45b9f83470ebd19fba7470c3",
             "statuses": [
                 {
                     "status": "in mempool",
@@ -117,6 +120,7 @@ curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_i
             "fee": "0.00001",
             "type": "send",
             "description": "Transaction [CURL]",
+            "forwarded_for": "3b10b68f8703efae9c71134feeca6770670e1e2aae78faba9868da0d341fa157",
             "receiver_addresses": [
                 {
                     "address": "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
