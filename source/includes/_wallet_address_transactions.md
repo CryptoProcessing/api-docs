@@ -36,6 +36,19 @@ Parameter             | Description
 `sender_address`      | Array of sender addresses with amount
 `statuses`            | Array of transaction statuses
 
+All possible transaction statuses:
+
+- "non confirmed" - newly created transaction in the application, not sent to mempool  
+- "queued" - transaction is in the queue to be sent  
+- "in mempool" - transaction in mempool  
+- "in block" - transaction is mined  
+- "failed" - transaction is rejected  
+
+Possible statuses for outgoing transactions:  
+"non confirmed", "queued", "in mempool", "in block", "failed"
+
+Possible statuses for incoming transactions:  
+"in mempool", "in block", "failed"
 
 ## Get All transactions
 
