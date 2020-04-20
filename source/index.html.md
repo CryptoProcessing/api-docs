@@ -23,6 +23,7 @@ includes:
   - wallet_seed
   - rates
   - errors
+  - request_signing 
 
 search: true
 ---
