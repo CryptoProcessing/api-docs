@@ -64,13 +64,15 @@ Parameter             | Description
 `limit`               | A limit on the number if objects to be returned. (default 25, max 100)
 `from_address`        | Sender address
 `to_address`          | Receiver address
+`order_by`            | Available values: "date"
+`sort`                | Available values: "asc" (default), "desc"
 
 
 > GET https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions
 
 ```shell
 curl "https://cryptoprocessing.io/api/v1/wallets/:wallet_id/addresses/:address_id/transactions?
-&from_date=2016-04-12T00:00:00.000Z&to_date=2019-04-30T00:00:00.01100Z&page=1&limit=10&fromaddress&toaddress
+&from_date=2016-04-12T00:00:00.000Z&to_date=2019-04-30T00:00:00.01100Z&page=1&limit=10&order_by=date&sort=desc
   -H "Authorization: Token <token>"
 ```
 
