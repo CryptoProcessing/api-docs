@@ -20,6 +20,21 @@ Parameter             | Description
 `statuses`            | Array of transaction statuses
 `forwarded_for`       | Hash of the transaction for which the forwarding was made
 
+All possible transaction statuses:
+
+- "non confirmed" - newly created transaction in the application, not sent to mempool  
+- "queued" - transaction is in the queue to be sent  
+- "in mempool" - transaction in mempool  
+- "in block" - transaction is mined  
+- "failed" - transaction is rejected
+- "pending" - queued up for virtual machine execution
+- "success" - transfer completed successfully
+
+Possible statuses for outgoing transactions:  
+"non confirmed", "queued", "in mempool", "in block", "failed", "pending", "success"
+
+Possible statuses for incoming transactions:  
+"in mempool", "in block", "failed", "pending", "success"
 
 ## The BTC transaction object
 
