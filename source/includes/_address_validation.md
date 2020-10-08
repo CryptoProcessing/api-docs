@@ -16,7 +16,9 @@ Attribute  | Description
 
 ```json
 {
-    "is_valid": false
+    "data": {
+        "is_valid": false
+    }
 }
 ```
 
@@ -24,7 +26,9 @@ Attribute  | Description
 
 ```json
 {
-    "is_valid": true
+    "data": {
+        "is_valid": true
+    }
 }
 ```
 
@@ -32,6 +36,8 @@ Attribute  | Description
 
 ```json
 {
-    "is_valid": true
+    "data": {
+        "is_valid": true
+    }
 }
 ```
