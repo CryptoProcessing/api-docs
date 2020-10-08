@@ -24,6 +24,7 @@ includes:
   - rates
   - errors
   - request_signing 
+  - address_validation
 
 search: true
 ---
