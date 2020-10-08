@@ -12,7 +12,7 @@ Attribute  | Description
 `currency` | currency, available currencies: eth, btc 
 `address`  | address for specified currency 
 
-> https://cryptoprocessing.io/api/v1/validate/eth/2NGZrVvZG92qGYqzTLjCAewvPZ7JE8S8Vx
+> https://cryptoprocessing.io/api/v1/validate/btc/2NGZrVvZG92qGYqzTLjCAewvPZ7JE8S8VxE
 
 ```json
 {
@@ -20,15 +20,15 @@ Attribute  | Description
 }
 ```
 
-> https://testnet.cryptoprocessing.io/api/v1/validate/btc/2NGZrVvZG92qGYqzTLjCAewvPZ7JE8S8Vx
+> https://testnet.cryptoprocessing.io/api/v1/validate/btc/2NGZrVvZG92qGYqzTLjCAewvPZ7JE8S8VxE
 
 ```json
 {
-    "is_valid": false
+    "is_valid": true
 }
 ```
 
-> https://cryptoprocessing.io/api/v1/validate/btc/2NGZrVvZG92qGYqzTLjCAewvPZ7JE8S8Vx
+> https://cryptoprocessing.io/api/v1/validate/eth/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
 
 ```json
 {
