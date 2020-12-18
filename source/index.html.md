@@ -10,23 +10,17 @@ toc_footers:
 
 includes:
   - introduction
-  - orders
-  - orders_webhooks
   - wallets
   - wallet_addresses
   - wallet_address_transactions
   - wallet_transactions
   - wallet_webhooks
   - wallet_outgoing_transactions_webhooks
-  - exchange_callbacks
   - wallet_payment_forwarding
   - wallet_seed
-  - rates
   - errors
   - request_signing 
   - address_validation
 
 search: true
 ---
-
-
