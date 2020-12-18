@@ -16,6 +16,7 @@ includes:
   - wallet_transactions
   - wallet_webhooks
   - wallet_outgoing_transactions_webhooks
+  - exchange_callbacks
   - wallet_payment_forwarding
   - wallet_seed
   - errors
