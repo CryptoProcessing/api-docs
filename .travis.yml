@@ -44,7 +44,7 @@ jobs:
         git clone --depth=1 git@github.com:oomag/ansible_controller.git
         echo "Ensure roles needed for deploy"
         pushd ansible_controller
-        ./tools/get-roles.sh tickers-roles.yml
+        ./tools/get-roles.sh docs
         echo "Ensure SSH key to login to target hosts"
         export ANSIBLE_VAULT_PASSWORD_FILE=$(readlink -f ./tools/get-vault-pass)
         ansible-playbook --limit $LIMIT --tags local -e @vars/extra.yaml run-ci-prerequisites.yml
