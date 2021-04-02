@@ -38,8 +38,8 @@ jobs:
         # As this build is based on Ruby, we need to install needed version of
         # Python first
         curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-        pyenv install 3.6.0
-        pyenv shell 3.6.0
+        pyenv install 3.8.0
+        pyenv shell 3.8.0
         # We're installing expect cause we need to pass ssh password to ssh-add and
         # Travis Ubuntu ssh-add version doesn't support new keys which allow to pass
         # secrets different way than thru 'expect' utility
@@ -64,7 +64,7 @@ jobs:
         # actually no much sense to bruteforce it at all
         expect -c "set timeout 10; spawn ssh-add $(pwd)/deploy/id_rsa ; expect -re \"Enter passphrase for.*\" ; send \"$SSH_PASS\r\" ; expect eof"
 
-        pip install ansible==2.6
+        pip install ansible==2.10
         # Actual deployment logic lays here
         git clone git@github.com:oomag/ansible_controller.git
 
