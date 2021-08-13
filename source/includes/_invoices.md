@@ -31,7 +31,7 @@ Attribute                   | Description
 `id`                        | Invoice ID 
 `store_id`                  | Store ID
 `amount`                    | Amount set at invoice creation
-`currency`                  | Settlement currency, available values: "EUR"
+`currency`                  | Settlement currency, available values: "EUR", "USD", "BTC"
 `status`                    | Available statuses: "NEW", "PAID"
 `success_redirect_url`      | Redirect url for paid invoice
 `error_redirect_url`        | URL for "RETURN TO STORE" link   
