@@ -147,3 +147,75 @@ curl --location --request GET 'http://cryptoprocessing.io/api/v1/checkout/stores
 ```
 
 Callbacks is used to sent notifications once invoice is updated. 
+
+## Deactivate invoice  
+
+> PUT https://cryptoprocessing.io/api/v1/checkout/invoices/:invoice_id/deactivate
+
+> Example request
+
+```shell
+curl -X PUT 'https://cryptoprocessing.io/api/v1/checkout/invoices/8f314370-83ab-4c00-8c77-c9874d4b2a6a/deactivate' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Token <token>' \
+-d ''
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "165152de-4fde-4c40-ab3e-354a580c8e99",
+    "store_id": "8f314370-83ab-4c00-8c77-c9874d4b2a6a",
+    "amount": "1001.54",
+    "currency": "EUR",
+    "status": "NEW",
+    "success_redirect_url": "https://example.com/process/success",
+    "error_redirect_url": "https://example.com/process/error",
+    "created_at": "2020-12-30T12:49:49.899Z",
+    "updated_at": "2020-12-30T12:49:49.899Z",
+    "customer_email": "customer@example.com",
+    "btc_address": "2N9HjtJZLvoiZ4kpXnJv9nGPSAYydEQhJQW",
+    "btc_amount": "0.044237474907194096",
+    "btc_rate": "0.000044169453948114",
+    "usd_amount": "1181.8172",
+    "usd_rate": "1.18",
+    "activated": false
+}
+```
+
+## Activate invoice  
+
+> PUT https://cryptoprocessing.io/api/v1/checkout/invoices/:invoice_id/activate
+
+> Example request
+
+```shell
+curl -X PUT 'https://cryptoprocessing.io/api/v1/checkout/invoices/8f314370-83ab-4c00-8c77-c9874d4b2a6a/activate' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Token <token>' \
+-d ''
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "165152de-4fde-4c40-ab3e-354a580c8e99",
+    "store_id": "8f314370-83ab-4c00-8c77-c9874d4b2a6a",
+    "amount": "1001.54",
+    "currency": "EUR",
+    "status": "NEW",
+    "success_redirect_url": "https://example.com/process/success",
+    "error_redirect_url": "https://example.com/process/error",
+    "created_at": "2020-12-30T12:49:49.899Z",
+    "updated_at": "2020-12-30T12:49:49.899Z",
+    "customer_email": "customer@example.com",
+    "btc_address": "2N9HjtJZLvoiZ4kpXnJv9nGPSAYydEQhJQW",
+    "btc_amount": "0.044237474907194096",
+    "btc_rate": "0.000044169453948114",
+    "usd_amount": "1181.8172",
+    "usd_rate": "1.18",
+    "activated": true
+}
+```
