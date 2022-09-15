@@ -22,7 +22,7 @@ includes:
   - errors
   - request_signing 
   - address_validation
-  - rescan_transfers
+  - rescan
   - invoices
 
 search: true

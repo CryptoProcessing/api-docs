@@ -1,6 +1,6 @@
-# Rescan transfers 
+# Rescan 
 
-## Rescan transfers
+## Rescan
 
 Method available only for ETH family wallets
 
